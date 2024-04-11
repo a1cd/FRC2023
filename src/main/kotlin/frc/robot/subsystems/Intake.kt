@@ -7,6 +7,7 @@ import com.revrobotics.SparkMaxAbsoluteEncoder.Type.kDutyCycle
 import edu.wpi.first.math.controller.ProfiledPIDController
 import edu.wpi.first.math.trajectory.TrapezoidProfile
 import edu.wpi.first.math.util.Units.rotationsToRadians
+import edu.wpi.first.networktables.DoubleEntry
 import edu.wpi.first.wpilibj.DigitalInput
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
@@ -135,8 +136,14 @@ class Intake(
     val deployPosition: Double
         get() = rotationsToRadians(deployEncoder.position)
 
+    val deployVelocity: Double
+        get() = rotationsToRadians(deployEncoder.velocity)
+
     val modePosition: Double
         get() = rotationsToRadians(modeEncoder.position)
+
+    val modeVelocity: Double
+        get() = rotationsToRadians(modeEncoder.velocity)
 
     var modeVoltage = 0.0 // voltage while zeroing
 
@@ -165,9 +172,11 @@ class Intake(
 
     fun setModeAngle(angle: Double) {
         modePositionSetpoint = angle
+        modePID.reset(modePosition, modeVelocity)
     }
 
     fun setDeployAngle(angle: Double) {
         deployPositionSetpoint = angle
+        deployPID.reset(deployPosition, deployVelocity)
     }
 }

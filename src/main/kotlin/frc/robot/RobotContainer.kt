@@ -43,6 +43,7 @@ import frc.robot.commands.pathing.*
 import frc.robot.commands.pathing.building.blocks.BuildingBlocks.goToHumanPlayerStation
 import frc.robot.commands.pathing.building.blocks.BuildingBlocks.goToPlacementPoint
 import frc.robot.constants.Field2dLayout
+import frc.robot.constants.drivetrain
 import frc.robot.constants.leds.count
 import frc.robot.controls.BryanControlScheme
 import frc.robot.controls.ChrisControlScheme
@@ -317,7 +318,9 @@ class RobotContainer {
                     .whileTrue(ShootToLTwo(intake, this@RobotContainer))
 
                 snapTo180
-                    .whileTrue(RotateTo180(this@RobotContainer))
+                    .whileTrue(
+                        MoveToPosition(drivetrain, drivetrain.estimatedPose2d, 180.0)
+                    )
             }
         }
     }

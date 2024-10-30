@@ -9,11 +9,6 @@ class KLEDRegion(val start: Int, val end: Int, vararg val animations: LEDAnimati
     var transparent = true
 
     companion object {
-        fun composite(length: Int, time: Time, regions: List<KLEDRegion>): Array<Color> {
-            var mutableBuffer = Array<Color>(length) { Color.BLACK }
-            optimizedComposite(mutableBuffer, time, regions)
-            return mutableBuffer
-        }
 
         fun optimizedComposite(mutableBuffer: Array<Color>, time: Time, regions: List<KLEDRegion>) {
             for (region in regions) {

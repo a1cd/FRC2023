@@ -1,18 +1,18 @@
 package frc.kyberlib.lighting.animations
 
 import frc.kyberlib.command.Game
-import frc.kyberlib.math.randomizer
 import frc.kyberlib.math.units.extensions.Time
 import frc.kyberlib.math.units.extensions.seconds
 import java.awt.Color
+import java.util.*
 
 class AnimationLightsaber(val color: Color, transparency: Boolean = false, condition: () -> Boolean = { true }) :
     LEDAnimation(condition, transparency) {
-    var startTime = -1.seconds
+    var startTime = (-1).seconds
     var lastUpdate = Game.time
 
-    private fun flicker(t: Time): Double {
-        return 0.9 + randomizer.nextGaussian() * 0.1
+    private fun flicker(): Double {
+        return 0.9 + Random().nextGaussian() * 0.1
     }
 
     private fun length(t: Time): Double {
@@ -26,9 +26,8 @@ class AnimationLightsaber(val color: Color, transparency: Boolean = false, condi
         lastUpdate = time
 
         val dt = time - startTime
-        val brightness = flicker(dt).coerceAtMost(1.0)
+        val brightness = flicker().coerceAtMost(1.0)
         val len = length(dt)
-//        List<Color>(length) {index: Int -> if (index < length * len) color * brightness else Color.BLACK}
         val _color = color * brightness
         // check if we are fully in the flicker phase
         if (len != 1.0) {

@@ -7,7 +7,6 @@ import java.awt.Color
 class AnimationRGBWave(
     private val cycles: Double = 1.0,
     val secondsPerMovement: Time = .2.seconds,
-    val reversed: Boolean = false,
     enableTransparency: Boolean = false,
     condition: () -> Boolean = { true }
 ) : LEDAnimation(condition, enableTransparency) {

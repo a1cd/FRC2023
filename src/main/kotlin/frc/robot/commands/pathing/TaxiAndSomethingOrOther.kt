@@ -1,24 +1,16 @@
 package frc.robot.commands.pathing
 
 import edu.wpi.first.math.geometry.Pose2d
-import edu.wpi.first.math.geometry.Rotation2d
 import edu.wpi.first.math.geometry.Rotation2d.fromDegrees
-import edu.wpi.first.wpilibj.DriverStation
 import edu.wpi.first.wpilibj.DriverStation.Alliance.Blue
 import edu.wpi.first.wpilibj.DriverStation.Alliance.Red
 import edu.wpi.first.wpilibj2.command.Command
-import edu.wpi.first.wpilibj2.command.ConditionalCommand
-import edu.wpi.first.wpilibj2.command.PrintCommand
 import frc.kyberlib.command.Game
-import frc.kyberlib.math.units.Pose2d
 import frc.robot.RobotContainer
 import frc.robot.commands.alltogether.IOLevel
 import frc.robot.commands.alltogether.SetSubsystemPosition
-import frc.robot.commands.balance.AutoBalance
 import frc.robot.commands.manipulator.Throw
-import frc.robot.commands.pathing.building.blocks.BuildingBlocks
 import frc.robot.commands.pathing.building.blocks.BuildingBlocks.goToPlacementPoint
-import frc.robot.commands.pathing.building.blocks.BuildingBlocks.leaveCommunityZone
 import frc.robot.utils.GamePiece
 import frc.robot.utils.grid.PlacementGroup
 import frc.robot.utils.grid.PlacementLevel

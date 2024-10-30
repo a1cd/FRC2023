@@ -1,8 +1,9 @@
 package frc.kyberlib.lighting.animations
 
-import frc.kyberlib.math.randomizer
 import frc.kyberlib.math.units.extensions.Time
 import java.awt.Color
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AnimationSparkle(
     private val color: Color,
@@ -21,7 +22,7 @@ class AnimationSparkle(
         }
 
         for (i in 0 until length) {
-            buffer[i] = Color(color.red, color.green, color.blue, randomizer.nextInt(80) + 175)
+            buffer[i] = Color(color.red, color.green, color.blue, Random().nextInt(80) + 175)
         }
 
 

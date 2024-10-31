@@ -56,19 +56,24 @@ class PhotonCameraWrapper {
         val bestTarget: PhotonTrackedTarget? =
             if (photonCamera.latestResult.hasTargets()) photonCamera.latestResult.bestTarget else null
 
-        return if (targets.size > 2) {
-            update()
-        } else if (targets.size == 2) {
-            if (targets
-                    .minOf { it.poseAmbiguity } < 0.5
-            )
+        return when {
+            targets.size > 2 -> {
                 update()
-            else Optional.empty()
-        } else if (targets.size == 1) {
-            if ((bestTarget?.poseAmbiguity ?: 1.0) < 0.2)
-                update()
-            else Optional.empty()
-        } else Optional.empty()
+            }
+            targets.size == 2 -> {
+                if (targets
+                        .minOf { it.poseAmbiguity } < 0.5
+                )
+                    update()
+                else Optional.empty()
+            }
+            targets.size == 1 -> {
+                if ((bestTarget?.poseAmbiguity ?: 1.0) < 0.2)
+                    update()
+                else Optional.empty()
+            }
+            else -> Optional.empty()
+        }
     }
 
     private fun update(): Optional<EstimatedRobotPose> {

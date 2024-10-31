@@ -231,11 +231,7 @@ class Elevator(
 
         SmartDashboard.putBoolean("LIMIT", limitSwitch.get())
 
-//        setMotorVoltage(voltageSetEntry.getDouble(0.0))
-
         // check if its in teleop
-//        if (RobotController.getUserButton()) setMotorVoltage(0.0)
-//        else setMotorVoltage(12.0.coerceAtMost(RoboRioSim.getVInVoltage()))
         if (limitSwitch.get() != lastLimitSwitch) {
             this.height = elevator.limits.bottomLimit
             println("LIMIT PRESSED: ${limitSwitch.get()}")

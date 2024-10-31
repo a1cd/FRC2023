@@ -23,13 +23,6 @@ class Robot : TimedRobot() {
         CommandScheduler.getInstance().run()
 
         robotContainer.update()
-
-//        if (DriverStation.getMatchTime() <= .25 && Game.OPERATED) {
-//            DriveCommand(robotContainer.drivetrain, rotation = { 0.0001 })
-//                .until {
-//                    DriverStation.getMatchTime() > 0.25
-//                }
-//        }
     }
 
     override fun teleopInit() {
@@ -43,9 +36,6 @@ class Robot : TimedRobot() {
         defaultCommandHolder = robotContainer.intake.defaultCommand
         robotContainer.intake.defaultCommand = null
         auto = robotContainer.auto
-//        auto = Commands.runOnce({ robotContainer.arm.setArmPosition(-PI /2) }) // move the arm to horizontal
-//                .andThen(Commands.waitUntil { robotContainer.arm.armPID.atGoal() })
-//                .andThen(AutoBalance(robotContainer.drivetrain))
         auto?.schedule()
     }
 
@@ -54,9 +44,5 @@ class Robot : TimedRobot() {
 
         robotContainer.intake.defaultCommand = defaultCommandHolder
         defaultCommandHolder = robotContainer.intake.defaultCommand
-    }
-
-    override fun disabledExit() {
-//        ZeroModeMotor(robotContainer.intake).schedule()
     }
 }

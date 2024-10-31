@@ -6,65 +6,6 @@ import edu.wpi.first.math.geometry.Translation2d
 object Field2dLayout {
     const val xCenter = 8.28
 
-    //        val bounds = listOf(
-//            // judge side red -> judge side blue -> far side blue -> far side red
-//            Translation3d(8.25, -4.0, 0.0),
-//            Translation3d(-8.25, -4.0, 0.0),
-//            Translation3d(-8.25, 4.0, 0.0),
-//            Translation3d(8.25, 4.0, 0.0)
-//        )
-//        val center = Translation3d(0.0, 0.0, 0.0)
-//
-//        object Areas {
-//            val blueChargingStation = Area(
-//                Translation3d(-3.5, 0.0, 0.0),
-//                Translation3d(-5.5, 0.0, 0.0),
-//                Translation3d(-5.5, 2.5, 0.0),
-//                Translation3d(-3.5, 2.5, 0.0)
-//            )
-//            val redChargingStation = Area(
-//                Translation3d(3.5, 0.0, 0.0),
-//                Translation3d(5.5, 0.0, 0.0),
-//                Translation3d(5.5, 2.5, 0.0),
-//                Translation3d(3.5, 2.5, 0.0)
-//            )
-//            val blueCommunityZone = Area(
-//                Translation3d(-5.0, -1.5, 0.0),
-//                Translation3d(-5.0, -2.75, 0.0),
-//                Translation3d(-1.6, -2.75, 0.0),
-//                Translation3d(-1.6, -4.0, 0.0),
-//                Translation3d(-8.25, -4.0, 0.0),
-//                Translation3d(-8.25, -1.5, 0.0)
-//            )
-//            val redCommunityZone = Area(
-//                Translation3d(5.0, -1.5, 0.0),
-//                Translation3d(5.0, -2.75, 0.0),
-//                Translation3d(1.6, -2.75, 0.0),
-//                Translation3d(1.6, -4.0, 0.0),
-//                Translation3d(8.25, -4.0, 0.0),
-//                Translation3d(8.25, -1.5, 0.0)
-//            )
-//
-//            val blueScoringZone = Area(
-//                Translation3d(-5.0, -1.4, 0.0),
-//                Translation3d(-8.25, -1.4, 0.0),
-//                Translation3d(-8.25, -1.4, 0.0),
-//                Translation3d(-8.25, -4.0, 0.0),
-//                Translation3d(-3.4, -4.0, 0.0),
-//                Translation3d(-3.4, 0.0, 0.0),
-//                Translation3d(-5.0, 0.0, 0.0)
-//            )
-//            val redScoringZone = Area(
-//                Translation3d(5.0, -1.4, 0.0),
-//                Translation3d(8.25, -1.4, 0.0),
-//                Translation3d(8.25, -1.4, 0.0),
-//                Translation3d(8.25, -4.0, 0.0),
-//                Translation3d(3.4, -4.0, 0.0),
-//                Translation3d(3.4, 0.0, 0.0),
-//                Translation3d(5.0, 0.0, 0.0)
-//            )
-//        }
-//
     val size = Translation2d(16.5, 8.0)
 
     object Axes {

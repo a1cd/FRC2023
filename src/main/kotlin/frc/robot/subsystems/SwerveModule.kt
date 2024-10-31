@@ -37,11 +37,8 @@ class SwerveModule(
     val driveMotor = WPI_TalonFX(driveMotorId).apply {
         configFactoryDefault()
 //        configSupplyCurrentLimit(SupplyCurrentLimitConfiguration(true, 40.0, 45.0, 0.0))
-        //driveMotor.configClosedloopRamp(0.25);
         configStatorCurrentLimit(StatorCurrentLimitConfiguration(true, 40.0, 45.0, 0.5))
         setNeutralMode(NeutralMode.Brake)
-        // Configure the encoders for both motors
-//        configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, 0)
         // set status frames
         setStatusFramePeriod(StatusFrame.Status_1_General, 10)
         setStatusFramePeriod(StatusFrame.Status_2_Feedback0, 20)
@@ -120,17 +117,6 @@ class SwerveModule(
     }
     private val angleFF = SimpleMotorFeedforward(Constants.angleKS, Constants.angleKV, Constants.angleKA)
 
-
-    //    class SwerveModuleSetpoint(
-//        var driveSetpoint: Double?,
-//        var angleSetpoint: Rotation2d?,
-//    ) : SwerveModuleState(
-//        driveSetpoint ?: 0.0,
-//        angleSetpoint ?: Rotation2d()
-//    ) {
-//        constructor(state: SwerveModuleState) : this(state.speedMetersPerSecond, state.angle)
-//        constructor() : this(null, null)
-//    }
     val swerveModulePosition: SwerveModulePosition
         get() = SwerveModulePosition(
             driveMotor.selectedSensorPosition / 2048.0 * WHEEL_CIRCUMFRENCE / DRIVE_GEAR_RATIO,

@@ -227,28 +227,9 @@ class Drivetrain(
         SmartDashboard.putNumber("uptime", gyro.upTime.toDouble())
         SmartDashboard.putNumber("posex", poseEstimator.estimatedPosition.translation.x)
         SmartDashboard.putNumber("posey", poseEstimator.estimatedPosition.translation.y)
-//        cameraWrappers[0].getEstimatedGlobalPose(poseEstimator.estimatedPosition).ifPresent {
-//            SmartDashboard.putNumber("poseyCamera", it.estimatedPose.translation.y)
-//            SmartDashboard.putNumber("posexCamera", it.estimatedPose.translation.x)
-//        }
-
-
-//        gyroEntry.setDouble(gyro.yaw)
-//        odometry.update(
-//            Rotation2d.fromDegrees(gyro.yaw),
-//            modules.map { it.position.toSwerveModulePosition() }.toTypedArray()
-//        )
 
         if (Game.sim) {
             val vel = estimatedVelocity
-//            simEstimatedPose2d =
-//                Pose2d(
-//                    Translation2d(
-//                        simEstimatedPose2d.x + (vel.translation.x * 0.02 * 0.01) + simQueuedForce.translation.x,
-//                        simEstimatedPose2d.y + (vel.translation.y * 0.02 * 0.01) + simQueuedForce.translation.y
-//                    ),
-//                    Rotation2d(simEstimatedPose2d.rotation.radians + (vel.rotation.radians * 0.02 * 0.01) + simQueuedForce.rotation.radians)
-//                )
             simEstimatedPose2d = simEstimatedPose2d + (vel * 0.02 * 0.01) + simQueuedForce
             simQueuedForce = Transform2d()
         }
@@ -287,7 +268,7 @@ class Drivetrain(
     ) {
         val chassisSpeedsField =
             if (fieldRelative) ChassisSpeeds.fromFieldRelativeSpeeds(
-                chassisSpeeds,//.slewLimited(xSlewRateLimiter, ySlewRateLimiter, rotSlewRateLimiter),
+                chassisSpeeds,
                 estimatedPose2d.rotation
             )
             else chassisSpeeds
@@ -320,19 +301,6 @@ class Drivetrain(
             // add the chassis speeds to the sim pose with dt = 0.02
             // also retain velocity when told to stop
 
-//            simEstimatedPose2d = Pose2d(
-//                simEstimatedPose2d.translation.x + newChassisSpeeds.vxMetersPerSecond * 0.02,
-//                simEstimatedPose2d.translation.y + newChassisSpeeds.vyMetersPerSecond * 0.02,
-//                simEstimatedPose2d.rotation.plus(Rotation2d(newChassisSpeeds.omegaRadiansPerSecond) * 0.02)
-//            ).apply {
-//                if (chassisSpeeds.vxMetersPerSecond == 0.0 && chassisSpeeds.vyMetersPerSecond == 0.0) {
-//                    simEstimatedPose2d = Pose2d(simEstimatedPose2d.translation, simEstimatedPose2d.rotation)
-//                    simEstimatedPose2d.plus(estimatedVelocity * 0.02)
-//                } else {
-//                    simEstimatedPose2d = Pose2d(simEstimatedPose2d.translation, simEstimatedPose2d.rotation)
-//                    simEstimatedPose2d.plus(estimatedVelocity * 0.02 * 0.1)
-//                }
-//            }
             simQueuedForce = Transform2d(
                 Translation2d(
                     newChassisSpeeds.vxMetersPerSecond * 0.02,
@@ -341,7 +309,6 @@ class Drivetrain(
                 Rotation2d(newChassisSpeeds.omegaRadiansPerSecond * 0.02)
             )
         }
-//        SwerveDriveKinematics.desaturateWheelSpeeds()
 
         swerveModuleStates.forEachIndexed { i, swerveModuleState ->
             modules[i].setpoint = swerveModuleState

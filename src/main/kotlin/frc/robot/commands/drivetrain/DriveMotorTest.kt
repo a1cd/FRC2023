@@ -24,14 +24,8 @@ class DriveMotorTest(
     }
 
     override fun execute() {
-//        modules.forEach {
-//            it.driveMotor.set(controlScheme.testPercent)
-//        }
     }
 
     override fun end(interrupted: Boolean) {
-//        modules.forEach {
-//            it.driveMotor.set(0.0)
-//        }
     }
 }

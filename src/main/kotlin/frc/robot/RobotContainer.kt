@@ -542,17 +542,6 @@ class RobotContainer {
 
     val armFieldPosition = drivetrain.field2d.getObject("arm")
 
-//    val DriveTab: ShuffleboardTab = Shuffleboard.getTab("DriveTab")
-//    val autoChoice = DriveTab.add("Autonomous", autoChooser)
-//    val fieldWidget = DriveTab.add("Field", field2dwidget)
-
-    //val CameraWidget = DriveTab.add("Camera", )
-//    val cameraWidget = DriveTab.addCamera(
-//        "Photon",
-//        "photonvision_Port_1182_MJPEG_Server",
-//        "http://photonvision.local:1182/stream.mjpg"
-//    )
-
     fun update() {
         leds.update()
         smartDashboardSelector.update()

@@ -42,12 +42,4 @@ class BalanceDrive(
         phaseStart = Timer.getFPGATimestamp()
         phase = Phase.Getup
     }
-
-//    override fun execute() {
-//        when (phase) {
-//            Phase.Getup -> {
-//                if (pitch.absoluteValue < 12 || roll.absoluteValue < 12) {
-//                    phase = Phase.MoveUp
-//                    phaseStart = Timer.getFPGATimestamp()
-//                }
 }
